@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yetumia - Dictionnaire Intelligent Swahili-Français</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <!-- Menu burger -->
+            <button class="menu-toggle" aria-label="Menu">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </button>
+            
+            <!-- Actions header -->
+            <div class="header-actions">
+                <!-- Contribution -->
+                <button class="btn-icon contribute-btn" id="contributeBtn" aria-label="Contribuer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </button>
+                
+                <!-- Thème -->
+                <button class="btn-icon theme-toggle" aria-label="Changer de thème">
+                    <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </button>
+                
+                <!-- Connexion -->
+                <button class="btn-icon login-btn" id="loginBtn" aria-label="Connexion">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <polyline points="10 17 15 12 10 7"/>
+                        <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu latéral -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <!-- Logo simplifié pour sidebar -->
+                <svg class="logo-sidebar" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="38" font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="currentColor">Yetumia</text>
+                </svg>
+            </div>
+            <button class="close-menu" aria-label="Fermer le menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Navigation</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span>Accueil</span>
+                    </a></li>
+                    <li><a href="#" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <span>Dictionnaire</span>
+                    </a></li>
+                    <li><a href="#" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l7.586 7.586"/>
+                            <circle cx="11" cy="11" r="2"/>
+                        </svg>
+                        <span>Grammaire</span>
+                    </a></li>
+                    <li><a href="#" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                        </svg>
+                        <span>Contributions</span>
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Compte</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="sidebar-link" id="sidebarLoginBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                            <polyline points="10 17 15 12 10 7"/>
+                            <line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                        <span>Connexion</span>
+                    </a></li>
+                    <li><a href="#" class="sidebar-link" id="sidebarRegisterBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
+                        </svg>
+                        <span>Créer un compte</span>
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <p class="sidebar-footer-text">Swahili Kat ↔ Français</p>
+                <p class="sidebar-footer-subtext">Dictionnaire intelligent</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Logo Section -->
+        <section class="logo-section">
+            <div class="container">
+                <div class="logo-center">
+                    <!-- Logo principal réduit -->
+                    <svg class="main-logo" viewBox="0 0 640.51 146.75">
+                        <defs>
+                            <style>
+                                .logo-main-svg {
+                                    fill: #42a0f4;
+                                    stroke-width: 0px;
+                                }
+                            </style>
+                        </defs>
+                        <g>
+                            <path class="logo-main-svg" d="M259.43,40.13l-26.13,50.34v28.64h-12.95v-28.64l-26.25-50.34h14.43l18.29,38.75,18.3-38.75h14.32Z"/>
+                            <path class="logo-main-svg" d="M321.1,92.63h-47.84c.38,5,2.23,9.02,5.57,12.04,3.33,3.03,7.42,4.55,12.27,4.55,6.97,0,11.89-2.91,14.77-8.75h13.98c-1.89,5.76-5.32,10.47-10.28,14.15-4.96,3.68-11.12,5.51-18.47,5.51-5.98,0-11.35-1.34-16.08-4.03-4.74-2.69-8.45-6.48-11.14-11.36-2.69-4.89-4.03-10.55-4.03-16.99s1.31-12.1,3.92-16.99c2.61-4.89,6.29-8.65,11.02-11.31,4.73-2.65,10.17-3.98,16.31-3.98s11.17,1.29,15.79,3.86c4.62,2.57,8.22,6.19,10.8,10.85,2.57,4.66,3.86,10.02,3.86,16.08,0,2.35-.15,4.47-.45,6.36ZM308.04,82.17c-.08-4.77-1.78-8.6-5.11-11.48-3.33-2.88-7.46-4.32-12.39-4.32-4.47,0-8.3,1.42-11.48,4.26-3.18,2.84-5.08,6.69-5.68,11.54h34.66Z"/>
+                            <path class="logo-main-svg" d="M349.4,67.06v34.66c0,2.35.55,4.04,1.65,5.06,1.1,1.02,2.97,1.53,5.62,1.53h7.95v10.8h-10.23c-5.83,0-10.3-1.36-13.41-4.09-3.11-2.73-4.66-7.16-4.66-13.3v-34.66h-7.39v-10.57h7.39v-15.57h13.07v15.57h15.23v10.57h-15.23Z"/>
+                            <path class="logo-main-svg" d="M433.26,56.49v62.61h-12.96v-7.39c-2.04,2.57-4.72,4.6-8.01,6.08-3.29,1.48-6.8,2.21-10.51,2.21-4.92,0-9.34-1.02-13.24-3.07-3.9-2.05-6.97-5.07-9.2-9.09-2.23-4.01-3.35-8.86-3.35-14.55v-36.82h12.84v34.89c0,5.61,1.4,9.91,4.2,12.9,2.8,2.99,6.63,4.49,11.48,4.49s8.69-1.5,11.53-4.49c2.84-2.99,4.26-7.29,4.26-12.9v-34.89h12.96Z"/>
+                            <path class="logo-main-svg" d="M533.48,40.13v78.97h-12.95v-54.09l-24.09,54.09h-8.98l-24.2-54.09v54.09h-12.95V40.13h13.98l27.73,61.93,27.61-61.93h13.86Z"/>
+                            <path class="logo-main-svg" d="M563.47,56.49v62.61h-12.95v-62.61h12.95Z"/>
+                            <path class="logo-main-svg" d="M580.12,70.81c2.61-4.85,6.17-8.62,10.68-11.31,4.51-2.69,9.49-4.03,14.94-4.03,4.92,0,9.22.96,12.9,2.9,3.67,1.93,6.61,4.34,8.81,7.22v-9.09h13.07v62.61h-13.07v-9.32c-2.2,2.95-5.19,5.42-8.98,7.39-3.79,1.97-8.11,2.95-12.95,2.95-5.38,0-10.3-1.38-14.77-4.15-4.47-2.76-8.01-6.63-10.62-11.59-2.61-4.96-3.92-10.59-3.92-16.87s1.31-11.86,3.92-16.7ZM624.78,76.49c-1.78-3.18-4.11-5.61-6.99-7.27-2.88-1.66-5.98-2.5-9.32-2.5s-6.44.82-9.32,2.44c-2.88,1.63-5.21,4.02-6.99,7.16-1.78,3.14-2.67,6.87-2.67,11.19s.89,8.11,2.67,11.36c1.78,3.26,4.13,5.74,7.04,7.44,2.92,1.7,6,2.56,9.26,2.56s6.44-.83,9.32-2.5c2.88-1.66,5.21-4.11,6.99-7.33,1.78-3.22,2.67-6.99,2.67-11.31s-.89-8.07-2.67-11.25Z"/>
+                            <rect class="logo-main-svg" x="547.23" y="35.74" width="19.8" height="10.8"/>
+                        </g>
+                        <g>
+                            <circle class="logo-main-svg" cx="65.22" cy="26.5" r="26.5"/>
+                            <circle class="logo-main-svg" cx="57.07" cy="97.83" r="20.38"/>
+                            <circle class="logo-main-svg" cx="118.22" cy="71.34" r="24.46"/>
+                            <circle class="logo-main-svg" cx="16.31" cy="130.45" r="16.31"/>
+                        </g>
+                    </svg>
+                    <h1 class="logo-title">Dictionnaire Intelligent</h1>
+                    <p class="logo-subtitle">La richesse des dialectes au coeur de notre Avenir.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <div class="search-box">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                placeholder="Rechercher un mot en Swahili ou en Français..." 
+                                autocomplete="off"
+                                class="search-input"
+                            >
+                            <button class="search-action-btn" id="searchBtn" aria-label="Rechercher">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Indicateur de langue détectée -->
+                        <div class="language-detection" id="languageDetection">
+                            <span class="detected-language">Recherche bidirectionnelle active</span>
+                        </div>
+                        
+                        <!-- Suggestions -->
+                        <div class="suggestions-container" id="suggestionsContainer">
+                            <div class="suggestions-list" id="suggestionsList">
+                                <!-- Suggestions dynamiques -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions -->
+                    <div class="search-instructions">
+                        <div class="instruction">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                            <span>Tapez en Swahili ou en Français - Le système détecte automatiquement</span>
+                        </div>
+                        <div class="instruction">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            <span>Appuyez sur Entrée ou cliquez sur la flèche pour rechercher</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" id="resultsTitle">Mots populaires</h2>
+                    <div class="results-count" id="resultsCount">Chargement...</div>
+                </div>
+                
+                <div class="results-grid" id="resultsContainer">
+                    <!-- Les résultats seront chargés ici par JavaScript -->
+                </div>
+                
+                <!-- No Results -->
+                <div class="no-results" id="noResults">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                        <line x1="8" y1="8" x2="16" y2="16" stroke-width="1.5"/>
+                    </svg>
+                    <h3>Aucun résultat trouvé</h3>
+                    <p>Essayez avec d'autres termes de recherche</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Fonctionnalités intelligentes</h2>
+                    <p class="section-subtitle">Dictionnaire conçu pour l'apprentissage et l'IA</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Recherche bidirectionnelle</h3>
+                        <p class="feature-description">Recherchez dans les deux sens : Swahili → Français et Français → Swahili. Le système détecte automatiquement la langue.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Contributions validées</h3>
+                        <p class="feature-description">Système collaboratif avec validation par nos linguistes pour garantir la qualité des données.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M19 11H5M14 17l-5-5 5-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Apprentissage intelligent</h3>
+                        <p class="feature-description">Suggestions contextuelles et exemples d'utilisation pour mieux comprendre chaque mot.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <!-- Logo réduit pour footer -->
+                    <svg class="footer-logo" viewBox="0 0 300 60">
+                        <defs>
+                            <style>
+                                .footer-logo-svg {
+                                    fill: #ffffff;
+                                    stroke-width: 0px;
+                                }
+                            </style>
+                        </defs>
+                        <g>
+                            <path class="footer-logo-svg" d="M60,10l-10,20v10h-5v-10l-10-20h5l7,15,7-15h5Z"/>
+                            <path class="footer-logo-svg" d="M100,40h-18c.1,2,.8,3.5,2,4.5s2.8,1.5,4.5,1.5c2.5,0,4.5-1,5.5-3h5c-.7,2-2,3.8-3.8,5.2-1.8,1.4-4,2.1-6.7,2.1-2.2,0-4.2-.5-5.9-1.5-1.7-1-3.1-2.4-4.1-4.2-1-1.8-1.5-3.9-1.5-6.2s.5-4.4,1.5-6.2c1-1.8,2.3-3.2,4-4.2,1.7-1,3.7-1.5,6-1.5s4.1.5,5.8,1.4c1.7.9,3,2.2,4,3.8,1,1.6,1.5,3.5,1.5,5.5,0,.9,0,1.6-.1,2.2ZM95,35c0-1.7-.6-3.1-1.9-4.1-1.3-1-2.8-1.5-4.6-1.5-1.6,0-3,.5-4.1,1.5-1.1,1-1.9,2.4-2.1,4.1h12.7Z"/>
+                            <circle class="footer-logo-svg" cx="25" cy="10" r="10"/>
+                            <circle class="footer-logo-svg" cx="22" cy="38" r="8"/>
+                        </g>
+                    </svg>
+                    <p class="footer-tagline">Dictionnaire intelligent Swahili ↔ Français</p>
+                </div>
+                
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Navigation</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Accueil</a></li>
+                            <li><a href="#" class="footer-link">Dictionnaire</a></li>
+                            <li><a href="#" class="footer-link">Grammaire</a></li>
+                            <li><a href="#" class="footer-link">Contribuer</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">À propos</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Notre mission</a></li>
+                            <li><a href="#" class="footer-link">Équipe</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                            <li><a href="#" class="footer-link">Presse</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Contact</h4>
+                        <ul class="footer-links">
+                            <li><a href="mailto:info@yetumia.com" class="footer-link">info@yetumia.com</a></li>
+                            <li><a href="#" class="footer-link">Support</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Suivez-nous</h4>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="X (Twitter)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="TikTok">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2025, Yetumia, tous droits réservés.</p>
+                    <div class="footer-legal">
+                        <a href="#" class="footer-link">Confidentialité</a>
+                        <a href="#" class="footer-link">Conditions</a>
+                        <a href="#" class="footer-link">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Connexion</h2>
+                <button class="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="modal-form">
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Mot de passe" required class="form-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </form>
+                <p class="modal-footer">Pas de compte ? <a href="#" id="switchToRegister">S'inscrire</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Créer un compte</h2>
+                <button class="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" class="modal-form">
+                    <div class="form-group">
+                        <input type="text" id="registerName" placeholder="Nom ou pseudo" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Email" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Mot de passe (8 caractères min.)" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerPasswordConfirm" placeholder="Confirmer le mot de passe" required class="form-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Créer mon compte</button>
+                </form>
+                <p class="modal-footer">Déjà un compte ? <a href="#" id="switchToLogin">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contribute Modal -->
+    <div class="modal" id="contributeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Contribuer au dictionnaire</h2>
+                <button class="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-required" id="contributeLoginRequired">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <h3>Connexion requise</h3>
+                    <p>Connectez-vous pour contribuer au dictionnaire.</p>
+                    <button class="btn btn-primary" id="loginFromContribute">Se connecter</button>
+                </div>
+                
+                <form id="contributeForm" class="modal-form" style="display: none;">
+                    <div class="form-group">
+                        <input type="text" id="swahiliWord" placeholder="Mot ou expression en Swahili" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="frenchTranslation" placeholder="Traduction en Français" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <select id="wordType" class="form-input">
+                            <option value="">Type de mot (optionnel)</option>
+                            <option value="noun">Nom</option>
+                            <option value="verb">Verbe</option>
+                            <option value="adjective">Adjectif</option>
+                            <option value="adverb">Adverbe</option>
+                            <option value="expression">Expression</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="exampleSentence" placeholder="Exemple d'utilisation (optionnel)" class="form-input" rows="3"></textarea>
+                    </div>
+                    <div class="form-notice">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <p>Votre contribution sera soumise à validation avant publication.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Soumettre la contribution</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
