@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: yetumia-frontend
+    ports:
+      - "8080:80"    # ⚠️ CHANGEZ à 8080:80 (pas 80:80)
+    volumes:
+      - .:/usr/share/nginx/html
+    restart: unless-stopped
