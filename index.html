@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yetumia - Dictionnaire Intelligent Swahili-Français</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <!-- Favicon SVG intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 324.35 333.61'%3E%3Cstyle%3E.cls-1%7Bfill:%23131414;stroke-width:0%7D%3C/style%3E%3Ccircle class='cls-1' cx='148.27' cy='60.24' r='60.24'/%3E%3Ccircle class='cls-1' cx='129.74' cy='222.41' r='46.34'/%3E%3Ccircle class='cls-1' cx='268.74' cy='162.17' r='55.6'/%3E%3Ccircle class='cls-1' cx='37.07' cy='296.54' r='37.07'/%3E%3C/svg%3E">
+    <meta name="description" content="Dictionnaire intelligent Swahili-Français avec reconnaissance automatique de langue, prononciation et contributions communautaires.">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="header-container">
-            <!-- Menu burger -->
+            <!-- Menu burger stylisé -->
             <button class="menu-toggle" aria-label="Menu">
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
@@ -56,7 +57,6 @@
     <nav class="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <!-- Logo simplifié pour sidebar -->
                 <svg class="logo-sidebar" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
                     <text x="0" y="38" font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="currentColor">Yetumia</text>
                 </svg>
@@ -72,21 +72,21 @@
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Navigation</h3>
                 <ul class="sidebar-menu">
-                    <li><a href="#" class="sidebar-link active">
+                    <li><a href="#" class="sidebar-link active" data-page="home">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                             <polyline points="9 22 9 12 15 12 15 22"/>
                         </svg>
                         <span>Accueil</span>
                     </a></li>
-                    <li><a href="#" class="sidebar-link">
+                    <li><a href="#" class="sidebar-link" data-page="dictionary">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                         </svg>
                         <span>Dictionnaire</span>
                     </a></li>
-                    <li><a href="#" class="sidebar-link">
+                    <li><a href="#" class="sidebar-link" data-page="grammar">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M12 19l7-7 3 3-7 7-3-3z"/>
                             <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
@@ -95,7 +95,7 @@
                         </svg>
                         <span>Grammaire</span>
                     </a></li>
-                    <li><a href="#" class="sidebar-link">
+                    <li><a href="#" class="sidebar-link" data-page="contributions">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
@@ -108,7 +108,7 @@
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Compte</h3>
                 <ul class="sidebar-menu">
-                    <li><a href="#" class="sidebar-link" id="sidebarLoginBtn">
+                    <li><a href="#" class="sidebar-link" id="sidebarLoginBtn" data-page="login">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
                             <polyline points="10 17 15 12 10 7"/>
@@ -116,7 +116,7 @@
                         </svg>
                         <span>Connexion</span>
                     </a></li>
-                    <li><a href="#" class="sidebar-link" id="sidebarRegisterBtn">
+                    <li><a href="#" class="sidebar-link" id="sidebarRegisterBtn" data-page="register">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="8.5" cy="7" r="4"/>
@@ -138,13 +138,22 @@
     <!-- Overlay -->
     <div class="overlay"></div>
 
+    <!-- Navigation des résultats -->
+    <div class="results-navigation">
+        <a href="#" class="back-to-search" id="backToSearchBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Retour à la recherche
+        </a>
+    </div>
+
     <!-- Contenu principal -->
     <main>
         <!-- Logo Section -->
         <section class="logo-section">
             <div class="container">
                 <div class="logo-center">
-                    <!-- Logo principal réduit -->
                     <svg class="main-logo" viewBox="0 0 640.51 146.75">
                         <defs>
                             <style>
@@ -171,7 +180,6 @@
                             <circle class="logo-main-svg" cx="16.31" cy="130.45" r="16.31"/>
                         </g>
                     </svg>
-                    <h1 class="logo-title">Dictionnaire Intelligent</h1>
                     <p class="logo-subtitle">La richesse des dialectes au coeur de notre Avenir.</p>
                 </div>
             </div>
@@ -201,20 +209,15 @@
                             </button>
                         </div>
                         
-                        <!-- Indicateur de langue détectée -->
                         <div class="language-detection" id="languageDetection">
                             <span class="detected-language">Recherche bidirectionnelle active</span>
                         </div>
                         
-                        <!-- Suggestions -->
                         <div class="suggestions-container" id="suggestionsContainer">
-                            <div class="suggestions-list" id="suggestionsList">
-                                <!-- Suggestions dynamiques -->
-                            </div>
+                            <div class="suggestions-list" id="suggestionsList"></div>
                         </div>
                     </div>
                     
-                    <!-- Instructions -->
                     <div class="search-instructions">
                         <div class="instruction">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -225,13 +228,10 @@
                         </div>
                         <div class="instruction">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10 9 9 9 8 9"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
                             </svg>
-                            <span>Appuyez sur Entrée ou cliquez sur la flèche pour rechercher</span>
+                            <span>Appuyez sur le bouton + en haut pour contribuer avec un mot ou une expression.</span>
                         </div>
                     </div>
                 </div>
@@ -246,11 +246,8 @@
                     <div class="results-count" id="resultsCount">Chargement...</div>
                 </div>
                 
-                <div class="results-grid" id="resultsContainer">
-                    <!-- Les résultats seront chargés ici par JavaScript -->
-                </div>
+                <div class="results-grid" id="resultsContainer"></div>
                 
-                <!-- No Results -->
                 <div class="no-results" id="noResults">
                     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                         <circle cx="11" cy="11" r="8"/>
@@ -312,7 +309,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <!-- Logo réduit pour footer -->
                     <svg class="footer-logo" viewBox="0 0 300 60">
                         <defs>
                             <style>
@@ -336,10 +332,10 @@
                     <div class="footer-column">
                         <h4 class="footer-title">Navigation</h4>
                         <ul class="footer-links">
-                            <li><a href="#" class="footer-link">Accueil</a></li>
-                            <li><a href="#" class="footer-link">Dictionnaire</a></li>
-                            <li><a href="#" class="footer-link">Grammaire</a></li>
-                            <li><a href="#" class="footer-link">Contribuer</a></li>
+                            <li><a href="#" class="footer-link" data-page="home">Accueil</a></li>
+                            <li><a href="#" class="footer-link" data-page="dictionary">Dictionnaire</a></li>
+                            <li><a href="#" class="footer-link" data-page="grammar">Grammaire</a></li>
+                            <li><a href="#" class="footer-link" data-page="contributions">Contribuer</a></li>
                         </ul>
                     </div>
                     
@@ -357,34 +353,34 @@
                         <h4 class="footer-title">Contact</h4>
                         <ul class="footer-links">
                             <li><a href="mailto:info@yetumia.com" class="footer-link">info@yetumia.com</a></li>
-                            <li><a href="#" class="footer-link">Support</a></li>
-                            <li><a href="#" class="footer-link">FAQ</a></li>
+                            <li><a href="#" class="footer-link" data-page="contact">Support</a></li>
+                            <li><a href="#" class="footer-link" data-page="faq">FAQ</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h4 class="footer-title">Suivez-nous</h4>
                         <div class="footer-social">
-                            <a href="#" class="social-link" aria-label="Facebook">
+                            <a href="https://www.facebook.com/share/1APKqAQqHH/" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                                 </svg>
                             </a>
-                            <a href="#" class="social-link" aria-label="X (Twitter)">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Instagram">
+                            <a href="#" class="social-link" aria-label="Instagram" data-note="Remplacer par lien Instagram réel">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                                 </svg>
                             </a>
-                            <a href="#" class="social-link" aria-label="TikTok">
+                            <a href="#" class="social-link" aria-label="TikTok" data-note="Remplacer par lien TikTok réel">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                                </svg>
+                            </a>
+                            <a href="https://whatsapp.com/channel/0029VbC5QXWKgsO0qCyxYg0F" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                 </svg>
                             </a>
                         </div>
@@ -406,7 +402,6 @@
     </footer>
 
     <!-- Modals -->
-    <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -432,7 +427,6 @@
         </div>
     </div>
 
-    <!-- Register Modal -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -464,7 +458,6 @@
         </div>
     </div>
 
-    <!-- Contribute Modal -->
     <div class="modal" id="contributeModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -516,6 +509,41 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Soumettre la contribution</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Contactez-nous</h2>
+                <button class="close-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="contactFormModal" class="modal-form">
+                    <div class="form-group">
+                        <input type="text" id="contactNameModal" placeholder="Votre nom" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmailModal" placeholder="Votre email" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="contactSubjectModal" placeholder="Sujet" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessageModal" placeholder="Votre message" required class="form-input" rows="6"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+                <div class="contact-info-modal">
+                    <h3>Autres moyens de contact</h3>
+                    <p>Email: <a href="mailto:info@yetumia.com">info@yetumia.com</a></p>
+                    <p>Site web: <a href="https://www.yetumia.com" target="_blank">www.yetumia.com</a></p>
+                </div>
             </div>
         </div>
     </div>
